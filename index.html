@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="roboot">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="https://th.bing.com/th/id/R.fd0b43c215fc4d57f081386a9f77b5a9?rik=Yj%2fxJE88s0U7zQ&pid=ImgRaw&r=0">
+    <title>Cursos de Asseio e Conservação</title>
+    <style>
+        iframe{
+          height: 400px;
+        }
+        .whatsapp{
+          margin: 10px; border-radius: 10px; padding: 10px;
+                    cursor: pointer; color: white; background: rgb(106, 172, 7);
+        }
+
+        .whatsapp:hover{
+          background: rgb(57, 57, 172);
+
+        }
+
+      .redessociais{
+        display: flex;
+        width: 200px;
+        justify-content: space-between;
+      }
+
+      .redessociais img{
+        height: 40px;
+        cursor: pointer;
+      }
+
+      .redessociais img:hover{
+        opacity: 0.5;
+      }
+
+      .contato_1{
+        width: 70%; 
+        margin-top: 30px;
+        display: block;
+        display: flex; 
+        justify-content: space-between; 
+        gap: 10px;
+      }
+      .modal-content {
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+          width: 100%;
+      }
+      .modal-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid #dee2e6;
+      }
+      .modal-title {
+          margin: 0;
+          font-size: 1.5rem;
+          color: #333;
+      }
+      .btn-close {
+          background-color: transparent;
+          border: none;
+          font-size: 1.5rem;
+          cursor: pointer;
+      }
+      .modal-body {
+          padding: 20px;
+      }
+      .modal-body form {
+          display: flex;
+          flex-direction: column;
+      }
+      .modal-body form input {
+          padding: 10px;
+          margin-bottom: 15px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 1rem;
+      }
+      .modal-body form button {
+          background-color: #007BFF;
+          color: #fff;
+          padding: 10px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+      }
+      .modal-body form button:hover {
+          background-color: #0056b3;
+      }
+      .modal-footer {
+          display: flex;
+          justify-content: flex-end;
+          padding: 10px;
+          border-top: 1px solid #dee2e6;
+      }
+      .btn-secondary {
+          background-color: #6c757d;
+          color: #fff;
+          padding: 10px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+      }
+      .btn-secondary:hover {
+          background-color: #5a6268;
+      }
+      #bem_vindo {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #333;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .bem-vindo-char {
+            display: inline-block;
+            opacity: 0;
+            transform: translateX(100%);
+            animation: rollIn 1s forwards;
+        }
+        @keyframes rollIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        #biblioteca{
+          display: none;
+          
+        }
+        .menu_1{
+          display: none;
+        }
+
+        .menu_2{
+          display: block;
+        }
+
+        .contato_2{
+          display: none;
+        }
+
+        @media screen and (max-width: 600px) {
+          .contato_2{
+            display: block;
+          }
+          .contato_1{
+            display: none;
+            margin-top: 10x;
+          }
+
+          .menu_1{
+          display: block;
+        }
+
+        #biblioteca{
+          display: block;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .menu_2{
+          display: none;
+        }
+        }
+  </style>
+</head>
+<body>
+
+  
+
+    <div class="content">
+
+      <a href="">
+        <img class="whatsapp_contato" src="data:image/png;base64,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" alt="">
+        
+        <span class="whatsapp_mensagem">Converse conosco pelo WhatsApp</span>
+      </a>
+      
+
+        <div class="nav">
+            <div class="nav_bar">
+                <nav class="navbar navbar-dark bg-black fixed-top">
+                    <div class="container-fluid">
+                      <a class="navbar-brand d-flex align-items-center" href="#">
+                        <img src="https://th.bing.com/th/id/R.fd0b43c215fc4d57f081386a9f77b5a9?rik=Yj%2fxJE88s0U7zQ&pid=ImgRaw&r=0" alt="" style="height: 30px; margin: 10px;">
+                        <div class="menu_1">
+                          <input type="text" placeholder="pesquisar..">
+                        </div>
+                        
+                    </a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                        <div class="offcanvas-header">
+                          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Configurações</h5>
+                          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                              <a class="nav-link" id="biblioteca" href="inscricoesabertas.html"
+                              style="font-size: 20px; color: #ffffff;
+                              background: rgb(0, 102, 255);">Biblioteca Virtual</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="trabalheconosco.html" target="_blank">Trabalhe conosco</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="Professores.html" target="_blank">Professores dos cursos</a>
+                            </li>
+                            <li class="nav-item">
+                              <p style="color: #b6b8b9;" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Curriculos</p>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#notica">Notícias</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#contao">contato</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a href="#">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAulas"
+                                style="background-color: green;">Inscrever-se</button>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </nav>
+            </div>
+        </div>
+        <div class="header">
+          <div id="bem_vindo">
+            <!--aqui vai aparecer uma mensagem desejando boas vindas para o úsuario-->
+          </div>
+          <div class="navegacao">
+            <div style="display: flex; justify-content: start;">
+              <img src="img/Blue And White Cleaning Services Logo.jpg" alt="">
+            </div>
+            <div class="banner">
+              <img src="img/Café Estocolmo.jpg" alt="">
+            </div>
+            <nav>
+              <a href="index.html">
+                <button>Home</button>
+              </a>
+
+              <a href="trabalheconosco.html" target="_blank">
+                <button>Trabalhe</button>
+              </a>
+
+              <a href="#notica">
+                <button>Notícias</button>
+              </a>
+
+              <a href="#contao">
+                <button>Contado</button>
+              </a>
+
+              <a href="#">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAulas"
+                style="background-color: green;">Inscrever-se</button>
+              </a>
+
+            </nav>
+          </div>
+          <br>
+          <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/Café Estocolmo.jpg" class="d-block w-100" alt="...">
+        
+              </div>
+              <div class="carousel-item">
+                <img src="img/slide-2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption  d-md-block">
+                  <h5>Second slide label</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/slide-3.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption  d-md-block">
+                  <h5>Third slide label</h5>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <br>
+          <div class="filtrar">
+            <div class="dropdow">
+              <span>filtar lista de cursos</span>
+              <div class="dropdow-content">
+              <button id="administração">Administração</button>
+              <button id="administração">zeladoria</button>
+              <button id="administração">conservação</button>
+              </div>
+            </div>
+
+          </div>
+          <br>
+          <div style="width: 100%; display: flex; justify-content: center; align-items: center;
+          background-color: aliceblue;">
+            <img src="img/tag.png" alt="">
+          </div>
+        </div>
+        <div class="main">
+            <div class="cursos" id="cursos">
+                <h2>Cursos Disponíveis</h2>
+                <div class="opcoes">
+
+                  <div id="administracao" class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col">
+                        <img src="https://th.bing.com/th/id/R.b5e6a463b2854ec85b3379d36f39d5fb?rik=Wt5FEC80JDtrBw&pid=ImgRaw&r=0" class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-10">
+                        <div class="card-body">
+                          <h5 class="card-title">Administração</h5>
+                          <p class="card-text">Curso Gratuito e presencial, cadastro e acesso são feitos por E-mail. 
+                            Se inscreva na plataforma ou se cadastre no curso diretamente
+                          </p>
+                          <p class="card-text"><a href="administracao.html" target="_blank"><button>Inscrever-se</button></a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col">
+                        <img src="img/zeladoria.jpg" class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-10">
+                        <div class="card-body">
+                          <h5 class="card-title">Zeladoria</h5>
+                          <p class="card-text">Curso Gratuito e presencial, cadastro e acesso são feitos por E-mail. 
+                            Se inscreva na plataforma ou se cadastre no curso diretamente
+                          </p>
+                          <p class="card-text"><a href="zeladoria.html" target="_blank"><button>Inscrever-se</button></a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col">
+                        <img src="https://gocil.com.br/wp-content/uploads/2021/01/FotoJet-2_Easy-Resize.com_-830x415.jpg" class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-10">
+                        <div class="card-body">
+                          <h5 class="card-title">Conservação</h5>
+                          <p class="card-text">Curso Gratuito e presencial, cadastro e acesso são feitos por E-mail. 
+                            Se inscreva na plataforma ou se cadastre no curso diretamente
+                          </p>
+                          <p class="card-text"><a href="conservacao.html" target="_blank"><button>Inscrever-se</button></a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col">
+                        <img src="https://www.generall.com.br/wp-content/uploads/2022/11/diferencas-servico-limpeza-zeladoria.jpg" class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-10">
+                        <div class="card-body">
+                          <h5 class="card-title">Manipulação de produtos</h5>
+                          <p class="card-text">Curso Gratuito e presencial, cadastro e acesso são feitos por E-mail. 
+                            Se inscreva na plataforma ou se cadastre no curso diretamente
+                          </p>
+                          <p class="card-text"><a href="manipulacaodeprodutos.html" target="_blank"><button>Inscrever-se</button></a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="noticias" id="notica">
+              <h3>Biblioteca Virtual</h3>
+              <div class="caixa_noticia" style="width: 50%;">
+
+              </div>
+              <br>
+              <div id="biblioteca">
+                <br>
+                <img src="https://th.bing.com/th/id/OIP.DSod4gmnDdx3aFNldqTuWAHaEK?rs=1&pid=ImgDetMain" alt="" style="width: 80%; height: 100px; border-radius: 7px;">
+                <br>
+                <img src="img/seta.svg" alt="" style="height: 40px;">
+
+                <a class="nav-link"  href="inscricoesabertas.html">
+                  
+                  <button
+                  style="padding: 10px;
+                  border-radius: 10px;
+                  width: 300px;
+                  background: green;
+                  color: white;">Biblioteca Virtual</button>
+                </a>
+              </div>
+              <br>
+              <br>
+                <h2>Notícias</h2>
+                <div class="caixa_noticia">
+                    
+                </div>
+
+                <div class="caixote">
+
+                  <a href="https://www.pe.senai.br/editais/">
+                    <div class="noticia_1">
+                      <img src="https://msktv.com.br/wp-content/uploads/2024/12/b9b81e7c-6448-4339-96b6-bbedd06cec49.jpeg" style="width: 100%;" alt="">
+                      <br>
+                      <div style="display: flex; margin-top: 10px;">
+                        <img class="calendario" src="img/calendario.svg" alt="">
+                        17/02/2015
+                      </div>
+                      <p>O SENAI Pernambuco torna público seus editais
+                         de concessão de bolsas de estudos.
+                      </p>
+                    </div>
+                    </a>
+  
+                    <a href="https://vestibular.fatec.sp.gov.br/">
+                    <div class="noticia_1">
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRT2EfQPc7JZYhMCWcMf7jeD01ISMXObQ51A&s" style="width: 100%;" alt="">
+                      <br>
+                      <div style="display: flex; margin-top: 10px;">
+                        <img class="calendario" src="img/calendario.svg" alt="">
+                        17/02/2015
+                      </div>
+                      <p>inscrições abertas 2025 !
+                      </p>
+                    </div>
+                    </a>
+                    <a href="inscricoesabertas.html" target="_blank">
+                    <div class="noticia_1">
+                      <img src="https://i.ytimg.com/vi/ZZ5ioQpukOQ/hqdefault.jpg?v=670ad626" style="width: 100%;" alt="">
+                      <br>
+                      <div style="display: flex; margin-top: 10px;">
+                        <img class="calendario" src="img/calendario.svg" alt="">
+                        17/02/2015
+                      </div>
+                      <p>Novas inscrições para os cursos presenciais
+                      </p>
+                    </div>
+                  </a>
+  
+                  <a href="https://wa.me/5582988873225">
+                    <div class="noticia_1">
+                      <img src="https://tm.ibxk.com.br/2016/10/20/20144905885603.jpg?ims=1200x675" style="width: 100%;" alt="">
+                      <br>
+                      <div style="display: flex; margin-top: 10px;">
+                        <img class="calendario" src="img/calendario.svg" alt="">
+                        17/02/2015
+                      </div>
+                      <p>converse conosco pelo Whattsapp
+                      </p>
+                    </div>
+                  </a>
+
+                </div>
+            </div>
+            <div class="depoimento">
+                <h2>Treinamento</h2>
+                <!-- Conteúdo dos Depoimentos -->
+                <div class="caixa_noticia">
+
+                </div>
+                <div class="babalu">
+
+                    <br>
+                    <h4>Treinamento de Limpeza</h4>
+                    <br>
+                    <iframe class="video"  src="https://www.youtube.com/embed/SAcw7kIKeXs" title="Treinamento de Limpeza Profissional | CNS Nacional de Serviços" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                </div>
+                <br><br>
+                <!--outra opção de contato-->
+              <div class="contato_2" style="text-align: center;">
+                <h3 id="contato">Contato</h3>
+                <div class="caixa_noticia" style="width: 100%;">
+  
+                </div>
+                <br>
+                <div style="width: 100%; display: flex; gap: 10px;">
+                    <p>(82) 9 8887-3225</p>
+                    <img src="img/contato_whatsapp.svg" alt="" height="20px">
+                </div>
+                <div style="width: 100%; display: flex; gap: 10px;">
+                  <p>ronaldoreemias@gmail.com</p>
+                  <img src="img/gmail.svg" alt="" height="20px">
+              </div>
+              <div style="width: 100%; display: flex; gap: 10px;">
+                <p>ronaldo12345ree@gmail.com</p>
+                <img src="img/gmail.svg" alt="" height="20px">
+              </div>
+              <br>
+              <a href="https://wa.me/5582988873225" style="display: flex; justify-content: center; text-decoration: none;">
+                <button
+                style="padding: 10px;
+                border-radius: 30px;
+                background: rgb(8, 175, 17);
+                color: white;
+                width: 200px;">Conversar</button>
+              </a>
+              </div>
+            </div>
+            <div class="local">
+              <h2>Nossa localização</h2>
+              <div class="caixa_noticia">
+                    
+              </div>
+              <br>
+              <div class="localizacao">
+                <div class="informacao_local">
+                  <h3>Localizado</h3>
+                  <p>Maceió - AL</p>
+                  <p>Av.Menino marcelo - Poço. N 39</p>
+                  <p>Desenvolvimento de sistemas web</p>
+                  <br>
+                  <h4>contato</h4>
+                  <p>(82) 9 8887-3225........... Suporte T.I</p>
+                  <a href="https://wa.me/5582988873225">
+                    <button class="whatsapp">charmar no Whatsapp</button>
+                  </a>
+                  <br>
+                  <p>Ronaldo Reemias Araújo</p>
+                  <h5>Horario de funcionamento :</h5>
+                  <p>manhã 8H ás 17H</p>
+                </div>
+                <div class="imagem">
+                  <img src="https://content.api.news/v3/images/bin/2f2dcb90c7a90d8ed50d2269f73ad172" alt="">
+                </div>
+              </div>
+              
+          </div>
+          
+        </div>
+        <div class="footer" >
+          <br>
+          <div class="contato_1" id="contao">
+            <div>
+              <h3>Localizado</h3>
+                <p>Maceió - AL</p>
+                <p>Av.Menino marcelo - Poço. N 39</p>
+                <p>Desenvolvimento de sistemas web</p>
+            </div>
+            <div>
+              <h4>contato</h4>
+                <p>(82) 9 8887-3225........... Suporte T.I</p>
+                <p>Ronaldo Reemias Araújo</p>
+                <h5>Horario de funcionamento :</h5>
+                <p>manhã 8H ás 17H</p>
+            </div>
+            <div>
+              <h4>Redes Sociais</h4>
+              <div class="redessociais">
+                <img src="img/facebook.svg" alt="" style="height: 35px;">
+                <img src="img/instagram.svg" alt="">
+                <img src="img/Youtube_icon-icons.com_66802.svg" alt="" style="height: 45px;">
+              </div>
+            </div>
+          </div>
+          <a style="text-decoration: none; color: white; text-align: center; margin-top: 30px;" 
+          href="">
+          <p>&copy; 2025 Cursos de Asseio e Conservação. Todos os direitos reservados.</p>
+          </a>
+        </div>
+    </div>
+    
+ <!-- Modal Aulas -->
+ <div class="modal fade" id="modalAulas" tabindex="-1" aria-labelledby="modalAulasLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="modalAulasLabel">Inscrição</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form id="cadastroForm">
+                  <br>
+                  <input type="text" id="username" placeholder="Crie um nome de usuário" required>
+                  <br>
+                  <input type="email" placeholder="E-mail" required>
+                  <br>
+                  <input type="password" placeholder="Criar senha" required>
+                  <br>
+                  <input type="password" placeholder="Confirmar senha" required>
+                  <br>
+                  <div>
+                      <button type="submit">Entrar</button>
+                  </div>
+              </form>
+              <div id="bem_vindo">
+                  <!--aqui vai aparecer uma mensagem desejando boas vindas para o usuário-->
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">envie seu curriculo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="forme">
+          <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
+            <!-- Replace with your Access Key -->
+            <input type="hidden" name="access_key" value="783c3007-44b4-477f-8fc1-1559312e66e8">
+            <!-- Form Inputs. Each input must have a name="" attribute -->
+            <div style="margin-bottom: 15px;">
+                <label for="name" style="font-weight: bold;">Nome:</label>
+                <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="email" style="font-weight: bold;">E-mail:</label>
+                <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="message" style="font-weight: bold;">Mensagem:</label>
+                <textarea id="message" name="message" required style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;"></textarea>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="file" style="font-weight: bold;">Currículo (PDF):</label>
+                <input type="file" id="file" name="file" accept=".pdf" required style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+            </div>
+            <!-- Honeypot Spam Protection -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+            <!-- Custom Confirmation / Success Page -->
+            <!-- <input type="hidden" name="redirect" value="https://mywebsite.com/thanks.html"> -->
+            <br>
+            <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Enviar</button>
+          </form>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  window.addEventListener('load', function() {
+    const mensagem = document.querySelector('.whatsapp_mensagem');
+    mensagem.classList.add('mostrar');
+    
+    setTimeout(function() {
+      mensagem.classList.remove('mostrar');
+    }, 30000); // 20000 ms = 20 segundos
+  });
+</script>
+
+    <script src="js.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
