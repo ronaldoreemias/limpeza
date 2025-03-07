@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="https://th.bing.com/th/id/R.fd0b43c215fc4d57f081386a9f77b5a9?rik=Yj%2fxJE88s0U7zQ&pid=ImgRaw&r=0">
+    <title>Cursos de Asseio e Conservação</title>
+    <style>
+        .contact-form {
+            font-family: Arial, sans-serif;
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .contact-form label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .contact-form input, .contact-form textarea, .contact-form select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .contact-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .bannerr{
+            display: block;
+            width: 80%; 
+            border-radius: 7px;
+        }
+
+        @media screen and (max-width: 600px) {
+        
+            .bannerr{
+                display: none;
+            }
+            
+            .contact-form{
+                width: 100%;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <div class="header">
+          <div class="navegacao">
+            <div style="display: flex; justify-content: start;">
+              <img src="img/Blue And White Cleaning Services Logo.jpg" alt="" style="height: 100px;">
+            </div>
+            <div class="banner">
+              <img src="img/Café Estocolmo.jpg" alt="">
+            </div>
+            <nav>
+              <a href="index.html">
+                <button>Home</button>
+              </a>
+
+              <a href="trabalheconosco.html" target="_blank">
+                <button>Trabalhe</button>
+              </a>
+            </nav>
+          </div>
+        </div>
+        <div class="main">
+            <br>
+            <div  style="width: 100%; display: flex;justify-content: center;">
+                <img class="bannerr" src="img/banner_3.jpg" alt="">
+            </div>
+            <br>
+            <div style="width: 100%; text-align: center; margin: 20px;">
+                <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Formulario de contato</h2>
+            </div>
+            <div class="forme" style="margin-top: 50px; width: 100%;">
+                <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="contact-form">
+                  <!-- Replace with your Access Key -->
+                  <input type="hidden" name="access_key" value="783c3007-44b4-477f-8fc1-1559312e66e8">
+                  <!-- Form Inputs. Each input must have a name="" attribute -->
+                  <div>
+                      <label for="name">Nome:</label>
+                      <input type="text" id="name" name="name" required>
+                  </div>
+                  <div>
+                      <label for="email">E-mail:</label>
+                      <input type="email" id="email" name="email" required>
+                  </div>
+                  <div>
+                      <label for="message">Mensagem:</label>
+                      <textarea id="message" name="message" required></textarea>
+                  </div>
+                  <div>
+                      <label for="rating">Nota de Atendimento (0 a 10):</label>
+                      <select id="rating" name="rating" required>
+                          <option value="" selected disabled>Selecione</option>
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                      </select>
+                  </div>
+                  <div>
+                      <label for="topic">Assunto:</label>
+                      <select id="topic" name="topic" required>
+                          <option value="" selected disabled>Selecione</option>
+                          <option value="opinion">Opinião</option>
+                          <option value="doubt">Dúvida</option>
+                          <option value="suggestion">Sugestão</option>
+                          <option value="other">Outro</option>
+                      </select>
+                  </div>
+                  <!-- Honeypot Spam Protection -->
+                  <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                  <!-- Custom Confirmation / Success Page -->
+                  <!-- <input type="hidden" name="redirect" value="https://mywebsite.com/thanks.html"> -->
+                  <br>
+                  <button type="submit">Enviar</button>
+                </form>
+              </div>
+        </div>
+        <div class="footer" id="contato">
+          <a style="text-decoration: none; color: white; text-align: center;" 
+          href="">
+          <p>&copy; 2025 Cursos de Asseio e Conservação. Todos os direitos reservados.</p>
+          <p>-> Ronaldo Reemias Araujo <- </p>
+        </a>
+      </div>
+  </div>
+  
+<!-- Modal Aulas -->
+<div class="modal fade" id="modalAulas" tabindex="-1" aria-labelledby="modalAulasLabel" aria-hidden="true">
+<div class="modal-dialog modal-xl">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modalAulasLabel">Inscrição</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="cadastroForm">
+                <br>
+                <input type="text" id="username" placeholder="Crie um nome de usuário" required>
+                <br>
+                <input type="email" placeholder="E-mail" required>
+                <br>
+                <input type="password" placeholder="Criar senha" required>
+                <br>
+                <input type="password" placeholder="Confirmar senha" required>
+                <br>
+                <div>
+                    <button type="submit">Entrar</button>
+                </div>
+            </form>
+            <div id="bem_vindo">
+                <!--aqui vai aparecer uma mensagem desejando boas vindas para o usuário-->
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+    </div>
+</div>
+</div>
+
+  <script src="js.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
+</body>
+</html>
